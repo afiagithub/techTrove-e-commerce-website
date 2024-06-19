@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth"
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import LoadingSpinner from "../shared/LoadingSpinner"
 
 const Navbar = () => {
     const links = <>
@@ -15,12 +16,17 @@ const Navbar = () => {
             : "border-2 border-transparent"} to="/blog">Blogs</NavLink></li>
     </>
 
-    const { user, logOut } = useAuth();
+    const { user, loading, logOut } = useAuth();
+    console.log(user);
     const handleSigOut = () => {
         logOut()
             .then(() => {
                 toast.success("Logged Out")
             })
+    }
+
+    if(loading){
+        return <LoadingSpinner></LoadingSpinner>
     }
     return (
         <div className="navbar py-5">
@@ -80,7 +86,7 @@ const Navbar = () => {
                         </div>
                     </div>
                         : <Link className="btn bg-[#4B70F5] text-white border-2 border-[#4B70F5] 
-                            hover:border-[#4B70F5] hover:bg-transparent hover:text-[#4B70F5]" to="/register">Login</Link>
+                            hover:border-[#4B70F5] hover:bg-transparent hover:text-[#4B70F5]" to="/login">Login</Link>
                 }
             </div>
         </div>
