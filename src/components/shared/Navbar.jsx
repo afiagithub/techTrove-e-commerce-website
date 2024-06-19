@@ -17,7 +17,6 @@ const Navbar = () => {
     </>
 
     const { user, loading, logOut } = useAuth();
-    console.log(user);
     const handleSigOut = () => {
         logOut()
             .then(() => {
@@ -79,7 +78,7 @@ const Navbar = () => {
                                 <li className="font-rale font-bold text-sm py-3">Hello,
                                     <span className="text-rose-500">{user.displayName}</span>
                                 </li>
-                                <li><a>Profile</a></li>
+                                <li><Link to={'dashboard'}>Profile</Link></li>
                                 <li><a>Dashboard</a></li>
                                 <li><button onClick={handleSigOut}>Logout</button></li>
                             </ul>

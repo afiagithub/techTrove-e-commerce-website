@@ -6,6 +6,7 @@ import AllProducts from "../pages/AllProducts";
 import Blogs from "../pages/Blogs";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
+import DashLayout from "../layouts/DashLayout";
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
         }
       ]
     },
+    {
+        path: 'dashboard',
+        element: <DashLayout></DashLayout>,
+    }
 ]);
 
 export default router;
